@@ -23,3 +23,6 @@
 
     ## Una frase que me define
     - "Cancelar no es una opción"
+
+    ## Algo divertido sobre mí
+    - Hago chistes de cuñado
