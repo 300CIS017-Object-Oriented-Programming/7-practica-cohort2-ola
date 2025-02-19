@@ -1,3 +1,8 @@
+### Grupo
+Santiago Vasco Lasso
+Alfonso Vega Villadiego
+Alan Orlando Mendez Ospina
+
 ### Punto A
 
 ##### Diseño uno
