@@ -145,5 +145,3 @@ direction TB
     Material --> Entrega
     CentroReciclaje --o Entrega
 ```
-
-
