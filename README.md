@@ -1,3 +1,73 @@
+
+
+
+##  Ejercicios
+
+Siguiendo el ejemplo disponible en: https://github.com/lufe089/POOEjemploCurso: 
+
+* Haga la codificación de las clases que corresponden a los siguientes diagramas. Puede agregar métodos y funcionalidades si lo desea y hacer ajustes en los 
+parametros de los métodos.  **Recuerde crear un proyecto nuevo para cada caso**
+* Cree objetos en el main de todos los tipos para probar que su código funciona
+* Relacione los objetos entre si, por ejemplo agregue un automóvil a una persona.  
+
+Puede consultar sus dudas sobre cómo hacer la codificación aquí: https://github.com/lufe089/POO/blob/main/3.CodificacionCpp.md
+
+### Ejercicio 1 Persona y automóvil
+```mermaid
+classDiagram
+    class Persona {
+        - string nombre
+        - int edad
+        - Automovil automovil
+
+        + Persona(string, int)
+        + agregarAutomovil(Automovil automovil)
+        + mostrarInfo()
+
+    } 
+    class Automovil {
+        - string marca
+        - int anio
+        + Automovil(string, int)
+        + mostrarInfo()
+    }
+
+    Persona --> Automovil
+```
+
+#### **Requisitos**
+1. Implementa las clases `Persona` y `Automovil` siguiendo la estructura del diagrama de clases proporcionado.
+2. Implementa los métodos constructores según lo especificado.
+3. Implementa el método `agregarAutomovil(Automovil automovil)` en la clase `Persona`, el cual debe permitir asociar un automóvil a la persona.
+4. Implementa el método `mostrarInfo()` en ambas clases, que debe imprimir los atributos de la instancia en la consola.
+5. En el `main()`, realiza las siguientes acciones:
+   - Crea al menos dos objetos de la clase `Persona` con diferentes nombres y edades.
+   - Crea al menos dos objetos de la clase `Automovil` con diferentes marcas y años.
+   - Asigna un automóvil a cada persona utilizando el método `agregarAutomovil`.
+   - Llama al método `mostrarInfo()` de cada persona para visualizar sus datos y los de su automóvil.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/imC5X1HD)
 # Sistema de Gestión de Ventas e Inventario para una Tienda Ecológica
 
@@ -138,55 +208,86 @@ Además, deberán crear un método en la clase `Tienda` que permita inicializar 
 - Proyecto funcionando correctamente y compilando sin errores, incluyendo cada una de las funcionalidades solicitadas.
 - Commits periódicos mostrando el avance del proyecto en un repositorio.
 
+    -----------------------------------------------------------------------------------------------
+
+    ### Ejercicio 1 Persona y automóvil
+```mermaid
+classDiagram
+    class Persona {
+        - string nombre
+        - int edad
+        - Automovil automovil
+
+        + Persona(string, int)
+        + agregarAutomovil(Automovil automovil)
+        + mostrarInfo()
+
+    } 
+    class Automovil {
+        - string marca
+        - int anio
+        + Automovil(string, int)
+        + mostrarInfo()
+    }
+
+    Persona --> Automovil
+```
+
+
+    -----------------------------------------------------------------------------------------------
+
+
 
 
 ```mermaid
-    class Diagram
-    direction TB
-        class Producto {
-            +codigo
-            +nombre
-            +precio
-            +stock
-            +descontarStock(int cantidad) bool
-            +agregarStock(int cantidad)
-        }
-    
-        class Cliente {
-            +id
-            +nombre
-            +compras
-            +agregarCompra(Venta* venta)
-            +mostrarHistorialCompras()
-        }
-    
-        class Venta {
-            +id
-            +cliente
-            +productosVendidos
-            +Venta(Cliente* cliente)
-            +agregarProductoVendido(Producto* producto, int cantidad)
-            +calcularTotal() float
-            +mostrarDetalleVenta()
-        }
-    
-        class Inventario {
-            +productos
-            +clientes
-            +ventas
-            +agregarProducto(string codigo, string nombre, float precio, int stockInicial)
-            +registrarVenta(int idCliente)
-            +reabastecerProducto(string codigoProducto, int cantidad)
-            +buscarProducto(string codigo) Producto
-            +buscarCliente(int idCliente) Cliente
-            +listarProductos()
-            +mostrarVentas()
-            +calcularValorInventario() float
-        }
-    
-        Producto --o Venta
-        Cliente <-- Venta
-        Inventario o-- Producto
-        Inventario o-- Venta
-```
+title Diagrama de Clases - Inventario y Ventas
+classDiagram
+direction TB
+    class Producto {
+        +codigo
+        +nombre
+        +precio
+        +stock
+        +descontarStock(int cantidad) bool
+        +agregarStock(int cantidad)
+    }
+
+    class Cliente {
+        +id
+        +nombre
+        +compras
+        +agregarCompra(Venta* venta)
+        +mostrarHistorialCompras()
+    }
+
+    class Venta {
+        +id
+        +cliente
+        +productosVendidos
+        +Venta(Cliente* cliente)
+        +agregarProductoVendido(Producto* producto, int cantidad)
+        +calcularTotal() float
+        +mostrarDetalleVenta()
+    }
+
+    class Inventario {
+        +productos
+        +clientes
+        +ventas
+        +agregarProducto(string codigo, string nombre, float precio, int stockInicial)
+        +registrarVenta(int idCliente)
+        +reabastecerProducto(string codigoProducto, int cantidad)
+        +buscarProducto(string codigo) Producto
+        +buscarCliente(int idCliente) Cliente
+        +listarProductos()
+        +mostrarVentas()
+        +calcularValorInventario() float
+    }
+
+    Producto --o Venta
+    Cliente <-- Venta
+    Inventario o-- Producto
+    Inventario o-- Venta
+
+
 
