@@ -15,36 +15,56 @@ Puede consultar sus dudas sobre cómo hacer la codificación aquí: https://gith
 ### Ejercicio 1 Persona y automóvil
 ```mermaid
 classDiagram
-    class Persona {
-        - string nombre
-        - int edad
-        - Automovil automovil
 
-        + Persona(string, int)
-        + agregarAutomovil(Automovil automovil)
-        + mostrarInfo()
-
-    } 
-    class Automovil {
-        - string marca
-        - int anio
-        + Automovil(string, int)
-        + mostrarInfo()
+    class Producto {
+	    +codigo
+	    +nombre
+	    +precio
+	    +stock
+	    +descontarStock(int cantidad) bool
+	    +agregarStock(int cantidad)
     }
 
-    Persona --> Automovil
+    class Cliente {
+	    +id
+	    +nombre
+	    +compras
+	    +agregarCompra(Venta* venta)
+	    +mostrarHistorialCompras()
+    }
+
+    class Venta {
+	    +id
+	    +cliente
+	    +productosVendidos
+	    +Venta(Cliente* cliente)
+	    +agregarProductoVendido(Producto* producto, int cantidad)
+	    +calcularTotal() float
+	    +mostrarDetalleVenta()
+    }
+
+    class Inventario {
+	    +productos
+	    +clientes
+	    +ventas
+	    +agregarProducto(string codigo, string nombre, float precio, int stockInicial)
+	    +registrarVenta(int idCliente)
+	    +reabastecerProducto(string codigoProducto, int cantidad)
+	    +buscarProducto(string codigo) Producto
+	    +buscarCliente(int idCliente) Cliente
+	    +listarProductos()
+	    +mostrarVentas()
+	    +calcularValorInventario() float
+    }
+
+    Producto --o Venta
+    Cliente <-- Venta
+    Inventario o-- Producto
+    Inventario o-- Venta
+
+
 ```
 
-#### **Requisitos**
-1. Implementa las clases `Persona` y `Automovil` siguiendo la estructura del diagrama de clases proporcionado.
-2. Implementa los métodos constructores según lo especificado.
-3. Implementa el método `agregarAutomovil(Automovil automovil)` en la clase `Persona`, el cual debe permitir asociar un automóvil a la persona.
-4. Implementa el método `mostrarInfo()` en ambas clases, que debe imprimir los atributos de la instancia en la consola.
-5. En el `main()`, realiza las siguientes acciones:
-   - Crea al menos dos objetos de la clase `Persona` con diferentes nombres y edades.
-   - Crea al menos dos objetos de la clase `Automovil` con diferentes marcas y años.
-   - Asigna un automóvil a cada persona utilizando el método `agregarAutomovil`.
-   - Llama al método `mostrarInfo()` de cada persona para visualizar sus datos y los de su automóvil.
 
 
 
@@ -60,35 +80,6 @@ classDiagram
 
 
 
-
-
-
-
-
-
-
-
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/imC5X1HD)
-# Sistema de Gestión de Ventas e Inventario para una Tienda Ecológica
-
-## 🌱 Introducción y Motivación
-
-La programación orientada a objetos (POO) es fundamental en el desarrollo de software robusto, modular y escalable. A medida que las aplicaciones se vuelven más complejas, la capacidad de manejar eficientemente objetos y sus interacciones se convierte en una habilidad clave. Este ejercicio busca motivarte a practicar conscientemente conceptos esenciales de la POO como encapsulación, uso de apuntadores, constructores, destructores y manejo dinámico de memoria.
-
-Realizar esta actividad con compromiso te permitirá fortalecer tus habilidades técnicas y prepararte mejor para afrontar futuros desafíos dentro de este curso.
-  Recuerda que cada concepto que practicas ahora facilita el desarrollo de proyectos más grandes y complejos posteriormente. 
-Además, este ejercicio es una oportunidad para profundizar de forma autónoma en los conceptos, utilizando herramientas de inteligencia artificial (por ejemplo, ChatGPT) para aclarar dudas, obtener ejemplos adicionales y verificar la calidad y claridad de tu código.
-
-Por ejemplo:
-
-- "Explícame con un ejemplo sencillo qué son los constructores y destructores en C++."
-- "Dame ejemplos de cómo manejar memoria dinámica usando apuntadores en C++."
-- "¿Cuál es la diferencia entre encapsulación y abstracción en programación orientada a objetos?"
-- "¿Podrías revisar este fragmento de código y sugerir cómo mejorar su claridad o eficiencia?"
-
-Estas consultas te permitirán resolver dudas específicas y fortalecer tu comprensión del tema considerando la importancia de aprender los conceptos de fondo.
-
->Cada estudiante es responsable directo de su propio aprendizaje. La iniciativa, autonomía y responsabilidad personal son fundamentales para aprovechar al máximo este curso.
 
 ## 📌 Requisitos Previos
 
