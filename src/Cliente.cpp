@@ -1,30 +1,37 @@
-#include <iostream>
 #include "Cliente.h"
+#include "Venta.h"
 
-using namespace std;
-
-// Constructor
-Cliente::Cliente(int id, const string& nombre) : id(id), nombre(nombre) {}
-
-// Agregar una compra al historial
-void Cliente::agregarCompra(const string& compra) {
-    historialCompras.push_back(compra);
+Cliente::Cliente(int idCliente, string nombre)
+{
+    this->idCliente = idCliente;
+    this->nombre = nombre;
 }
 
-// Mostrar el historial de compras
-void Cliente::mostrarHistorial() const {
-    cout << "Historial de compras de " << nombre << " (ID: " << id << "):\n";
-    for (const auto& compra : historialCompras) {
-        cout << "- " << compra << endl;
+//GETTERS
+int Cliente::getId()
+{return this->idCliente;}
+
+string Cliente::getNombre()
+{return this->nombre;}
+
+//SETTERS
+void Cliente::setNombre(string nombreC)
+{this->nombre = nombre;}
+
+void Cliente::setId(int idCliente)
+{
+    this->idCliente = idCliente;
+}
+
+void Cliente::agregarCompra(Venta* venta)
+{
+    this->compras.push_back(venta);
+}
+
+void Cliente::mostrarHistorialCompras()
+{
+    for (int i = 0; i < this->compras.size(); i++)
+    {
+        compras[i]->mostrarDetalleVenta();
     }
-}
-
-// Obtener ID
-int Cliente::getId() const {
-    return id;
-}
-
-// Obtener nombre
-string Cliente::getNombre() const {
-    return nombre;
 }

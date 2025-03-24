@@ -4,7 +4,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "Venta.h"
+
+class Venta;
 
 using namespace std;
 
@@ -20,12 +21,15 @@ public:
     Cliente(int idCliente, string nombre);
 
     // Métodos de acceso (getters)
-    int getId() const;
-    string getNombre() const;
+    int getId();
+    string getNombre();
 
     // Métodos de negocio
     void agregarCompra(Venta* venta);
-    void mostrarHistorialCompras() const;
+    void mostrarHistorialCompras();
+
+    void setNombre(string nombre);
+    void setId(int idCliente);
 };
 
 #endif
