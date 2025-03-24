@@ -1,3 +1,6 @@
+//
+// Created by alfonso vega villadiego on 22/03/25.
+//
 #include "Cliente.h"
 #include "Venta.h"
 
@@ -9,14 +12,14 @@ Cliente::Cliente(int idCliente, string nombre)
 
 //GETTERS
 int Cliente::getId()
-{return this->idCliente;}
+    {return this->idCliente;}
 
 string Cliente::getNombre()
-{return this->nombre;}
+    {return this->nombre;}
 
 //SETTERS
 void Cliente::setNombre(string nombreC)
-{this->nombre = nombre;}
+    {this->nombre = nombre;}
 
 void Cliente::setId(int idCliente)
 {

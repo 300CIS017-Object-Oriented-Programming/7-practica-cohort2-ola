@@ -1,12 +1,16 @@
+//
+// Created by alfonso vega villadiego on 22/03/25.
+//
+
 #ifndef VENTA_H
 #define VENTA_H
-
 #include "Cliente.h"
 #include "Producto.h"
 #include <iostream>
 #include <string>
 #include <vector>
 
+class Cliente;
 using namespace std;
 
 
@@ -22,9 +26,9 @@ public:
 
     // Métodos de negocio
     void agregarProductoVendido(Producto* producto, int cantidad);
-    float calcularTotal() const;
-    void mostrarDetalleVenta() const;
-    Cliente* getCliente() const;
+    float calcularTotal();
+    void mostrarDetalleVenta();
+    Cliente* getCliente();
 };
 
 #endif

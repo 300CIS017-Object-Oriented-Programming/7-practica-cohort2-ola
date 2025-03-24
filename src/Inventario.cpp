@@ -1,3 +1,6 @@
+//
+// Created by alfonso vega villadiego on 22/03/25.
+//
 #include "Inventario.h"
 
 
@@ -83,11 +86,3 @@ float Inventario::calcularValorInventario() const{
     }
     return valorTotal;
 }
-
-
-
-
-
-
-
-
