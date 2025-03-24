@@ -1,0 +1,14 @@
+# ninja log v6
+752	886	1742788488431777720	untitled7	7e7890caf7d32900
+19	869	7644922097263891	CMakeFiles/untitled7.dir/Venta.cpp.obj	3c7ed7fcb0955463
+8	798	7644922097153944	CMakeFiles/untitled7.dir/Producto.cpp.obj	bb675e3817d277b7
+12	956	7644922097193982	CMakeFiles/untitled7.dir/Inventario.cpp.obj	77803b52025d2dd1
+15	904	7644922097223946	CMakeFiles/untitled7.dir/Cliente.cpp.obj	9e00bde34d7adbb7
+956	1159	7644922106633888	untitled7.exe	58e9c189844ecbf9
+5	937	7644922097123942	CMakeFiles/untitled7.dir/main.cpp.obj	fb083829a5e4ec78
+16	1220	7644944764328939	CMakeFiles/untitled7.dir/Producto.cpp.obj	9b6b2072571a8c02
+29	1334	7644944764469010	CMakeFiles/untitled7.dir/Venta.cpp.obj	8c38b3c1343ec796
+25	1361	7644944764419070	CMakeFiles/untitled7.dir/Cliente.cpp.obj	9c36566305640363
+20	1456	7644944764378994	CMakeFiles/untitled7.dir/Inventario.cpp.obj	4a5b1ab1590df5e4
+10	1473	7644944764278969	CMakeFiles/untitled7.dir/main.cpp.obj	50a86bc72c212476
+1473	1682	7644944778898986	untitled7.exe	58e9c189844ecbf9
