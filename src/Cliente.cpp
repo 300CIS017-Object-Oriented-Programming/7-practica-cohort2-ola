@@ -26,7 +26,7 @@ void Cliente::setId(int idCliente)
     this->idCliente = idCliente;
 }
 
-void Cliente::agregarCompra(Venta* venta)
+void Cliente::agregarCompra(Venta venta)
 {
     this->compras.push_back(venta);
 }
@@ -35,6 +35,6 @@ void Cliente::mostrarHistorialCompras()
 {
     for (int i = 0; i < this->compras.size(); i++)
     {
-        compras[i]->mostrarDetalleVenta();
+        compras[i].mostrarDetalleVenta();
     }
 }

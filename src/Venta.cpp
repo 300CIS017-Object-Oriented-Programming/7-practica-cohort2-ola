@@ -4,14 +4,14 @@
 
 #include "Venta.h"
 
-Venta::Venta(Cliente* cliente)
+Venta::Venta(int idVenta)
 {
-    this->cliente = cliente;
+    this->idVenta = idVenta;
 }
 
-void Venta::agregarProductoVendido(Producto* producto, int cantidad)
+void Venta::agregarProductoVendido(Producto producto, int cantidad)
 {
-    pair<Producto*, int> agregarProducto = make_pair(producto, cantidad);
+    pair<Producto, int> agregarProducto = make_pair(producto, cantidad);
     productosVendidos.push_back(agregarProducto);
 }
 
@@ -21,7 +21,7 @@ float Venta::calcularTotal()
 
     for (int i = 0; i < productosVendidos.size(); i++)
     {
-        total += productosVendidos[i].first->getPrecio()*productosVendidos[i].second;
+        total += productosVendidos[i].first.getPrecio()*productosVendidos[i].second;
     }
 
     return total;
@@ -31,12 +31,7 @@ void Venta::mostrarDetalleVenta()
 {
     for (int i = 0; i < productosVendidos.size(); i++)
     {
-        cout << productosVendidos[i].first->getNombre() << " " << productosVendidos[i].first->getPrecio() << " " << productosVendidos[i].second << endl;
+        cout << productosVendidos[i].first.getNombre() << " " << productosVendidos[i].first.getPrecio() << " " << productosVendidos[i].second << endl;
     }
-}
-
-Cliente* Venta::getCliente()
-{
-    return this->cliente;
 }
 //GETTERS

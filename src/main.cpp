@@ -2,17 +2,20 @@
 #include <vector>
 #include <limits>  // Para limpiar el buffer de entrada
 #include "Producto.h"
+#include "Inventario.h"
+#include "Venta.h"
+#include "Cliente.h"
 
 using namespace std;
 
 int main() {
-    vector<Producto*> inventario;
-    string comando, nombre, codigo;
-    int stock;
+    Inventario inventario;
+    string comando, comando2, comando3, nombre, codigo;
+    int stock, cedula, idVenta = 0, cantidad;
     float precio;
 
     while (true) {
-        cout << "Ingrese comando (AGREGAR, QUITAR, MOSTRAR, SALIR): ";
+        cout << "Ingrese comando (AGREGAR, QUITAR, MOSTRAR, INGRESAR, VENTAS, TOTAL, SALIR): ";
         cin >> comando;
         cin.ignore(); // Limpia el buffer antes de leer líneas completas
 
@@ -39,7 +42,7 @@ int main() {
             }
 
             // Agregar producto al inventario
-            inventario.push_back(new Producto(codigo, nombre, precio, stock));
+            inventario.agregarProducto(codigo, nombre, precio, stock);
             cout << "Producto agregado!" << endl;
         }
 
@@ -47,34 +50,58 @@ int main() {
             cout << "Ingrese codigo del producto a quitar: ";
             cin >> codigo;
 
-            bool encontrado = false;
-            for (auto it = inventario.begin(); it != inventario.end(); ++it) {
-                if ((*it)->getCodigo() == codigo) {
-                    delete *it;  // Liberar memoria
-                    inventario.erase(it);
-                    cout << "Producto eliminado!" << endl;
-                    encontrado = true;
-                    break;
-                }
-            }
+            inventario.eliminarProducto(codigo);
 
-            if (!encontrado) {
-                cout << "Producto no encontrado!" << endl;
-            }
+            cout << "Producto correctamente eliminado" << endl;
         }
 
         else if (comando == "MOSTRAR") {
-            if (inventario.empty()) {
-                cout << "El inventario está vacío." << endl;
-            } else {
-                cout << "Inventario:\n";
-                for (const auto& producto : inventario) {
-                    cout << "Nombre: " << producto->getNombre()
-                         << ", Codigo: " << producto->getCodigo()
-                         << ", Precio: " << producto->getPrecio()
-                         << ", Stock: " << producto->getStock() << endl;
+            inventario.listarProductos();
+        }
+
+        else if (comando == "INGRESAR") {
+            cout << "Bienvenido al sistema de compras!\n Ingrese su cedula: ";
+            cin >> cedula;
+            cout << "Ahora ingrese su nombre: ";
+            cin >> nombre;
+            inventario.agregarCliente(cedula, nombre);
+            Cliente * cliente = inventario.buscarCliente(cedula);
+            string comando2;
+            while(comando2 != "SALIR"){
+                cout << "Senior/a " << nombre << ", Que desea realizar? (COMPRAR, VER, SALIR): ";
+                cin >> comando2;
+                if (comando2 == "COMPRAR"){
+                    Venta nuevaVenta = Venta(idVenta++);
+                    string comando3;
+                    while(comando3 != "SALIR"){
+                        inventario.listarProductos();
+                        cout << "Digite el codigo del producto que desea agregar a la compra (o digite SALIR si desea acabar la compra): " << endl;
+                        cin >> comando3;
+                        if(comando3 != "SALIR"){
+                            cout << "Digite la cantidad de este producto que desea comprar: ";
+                            cin >> cantidad;
+                            Producto * productoRef = inventario.buscarProducto(comando3);
+                            productoRef->descontarStock(cantidad);
+                            if(productoRef->getStock() <= 0){
+                                inventario.eliminarProducto(comando3);
+                            }
+                            Producto nuevoProducto = Producto(productoRef->getCodigo(), productoRef->getNombre(), productoRef->getPrecio(), productoRef->getStock());
+                            nuevaVenta.agregarProductoVendido(nuevoProducto, cantidad);
+                        }
+                    }
+                    cliente->agregarCompra(nuevaVenta);
+                } else if(comando2 == "VER"){
+                    cliente->mostrarHistorialCompras();
                 }
             }
+        }
+
+        else if (comando == "VENTAS") {
+            inventario.mostrarVentas();
+        }
+
+        else if (comando == "TOTAL") {
+            cout << "Valor total del inventario: " << inventario.calcularValorInventario() << endl;
         }
 
         else if (comando == "SALIR") {
@@ -85,12 +112,6 @@ int main() {
             cout << "Comando no reconocido! Intente de nuevo." << endl;
         }
     }
-
-    // Liberar memoria antes de salir
-    for (auto producto : inventario) {
-        delete producto;
-    }
-    inventario.clear();
 
     cout << "Programa finalizado!" << endl;
     return 0;

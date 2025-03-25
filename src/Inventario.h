@@ -5,8 +5,6 @@
 #ifndef INVENTARIO_H
 #define INVENTARIO_H
 
-
-
 #include <iostream>
 #include <vector>
 #include <string>
@@ -27,7 +25,8 @@ private:
 public:
     // Métodos de negocio
     void agregarProducto(string codigo, string nombre, float precio, int stock);
-    void registrarVenta(int idCliente);
+    void eliminarProducto(string codigo);
+    void agregarCliente(int idCliente, string nombre);
     void reabastecerProducto(string codigoProducto, int cantidad);
     Producto* buscarProducto(string codigo);
     Cliente* buscarCliente(int idCliente);

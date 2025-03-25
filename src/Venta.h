@@ -10,25 +10,22 @@
 #include <string>
 #include <vector>
 
-class Cliente;
 using namespace std;
 
 
 class Venta {
 private:
     int idVenta;
-    Cliente* cliente;
-    vector<pair<Producto*, int>> productosVendidos;
+    vector<pair<Producto, int>> productosVendidos;
 
 public:
     // Constructor
-    Venta(Cliente* cliente);
+    Venta(int idVenta);
 
     // Métodos de negocio
-    void agregarProductoVendido(Producto* producto, int cantidad);
+    void agregarProductoVendido(Producto producto, int cantidad);
     float calcularTotal();
     void mostrarDetalleVenta();
-    Cliente* getCliente();
 };
 
 #endif

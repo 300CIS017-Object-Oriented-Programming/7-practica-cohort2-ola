@@ -18,7 +18,7 @@ class Cliente {
 private:
     int idCliente;
     string nombre;
-    vector<Venta*> compras;
+    vector<Venta> compras;
 
 public:
     // Constructor
@@ -29,7 +29,7 @@ public:
     string getNombre();
 
     // Métodos de negocio
-    void agregarCompra(Venta* venta);
+    void agregarCompra(Venta venta);
     void mostrarHistorialCompras();
 
     void setNombre(string nombre);

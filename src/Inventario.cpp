@@ -9,21 +9,20 @@ using namespace std;
 void Inventario :: agregarProducto(string codigo, string nombre, float precio, int stock){
     Producto* producto = new Producto(codigo, nombre, precio, stock);
     productos.push_back(producto);
-
 }
 
-void Inventario :: registrarVenta(int idCliente){
-    Cliente* cliente = buscarCliente(idCliente);
-
-    if(cliente != nullptr){
-        Venta* nuevaVenta = new Venta(cliente);
-        ventas.push_back(nuevaVenta);
-        cliente->agregarCompra(nuevaVenta);
-
+void Inventario :: eliminarProducto(string codigo){
+    Producto* encontrado;
+    for(auto it = productos.begin(); it != productos.end(); ++it){
+        if ((*it)->getCodigo() == codigo){
+            productos.erase(it);
+            break;
+        }
     }
-    else{
-        cout << "El cliente no se pudo encontrar" << endl;
-    }
+}
+void Inventario :: agregarCliente(int idCliente, string nombre){
+    Cliente* cliente = new Cliente(idCliente, nombre);
+    clientes.push_back(cliente);
 }
 
 void Inventario :: reabastecerProducto(string codigoProducto, int cantidad){
@@ -71,10 +70,9 @@ void Inventario::listarProductos() const{
 
 void Inventario::mostrarVentas() const {
     cout << "Registro de Ventas" << endl;
-    for(auto it = ventas.begin(); it != ventas.end(); ++it){
-        cout << "Cliente: " << (*it)->getCliente()->getNombre()
-             << " Total: $" << (*it)->calcularTotal() << endl;
-        (*it)->mostrarDetalleVenta();
+    for(auto it = clientes.begin(); it != clientes.end(); ++it){
+        cout << "Cliente: " << (*it)->getNombre() << endl << "Historial de compras:" << endl;
+        (*it)->mostrarHistorialCompras();
     }
 
 }
